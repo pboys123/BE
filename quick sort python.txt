@@ -1,0 +1,57 @@
+Title of the Assignment: Write a program for analysis of quick sort by using deterministic and randomized variant.
+Code:
+
+import random
+def deterministic_quick_sort(arr):
+ if len(arr) <= 1:
+  return arr
+ pivot = arr[0]
+ lesser = []
+ equal = []
+ greater = []
+
+ for element in arr:
+  if element < pivot:
+   lesser.append(element)
+  elif element == pivot:
+   equal.append(element)
+  else:
+   greater.append(element)
+return deterministic_quick_sort(lesser) + equal +
+deterministic_quick_sort(greater)
+
+def randomized_quick_sort(arr):
+if len(arr) <= 1:
+return arr
+pivot = random.choice(arr)
+lesser = []
+equal = []
+greater = []
+for element in arr:
+if element < pivot:
+lesser.append(element)
+elif element == pivot:
+equal.append(element)
+else:
+greater.append(element)
+return randomized_quick_sort(lesser) + equal + randomized_quick_sort(greater)
+
+if __name__ == "__main__":
+arr = [3, 6, 8, 10, 1, 2, 1]
+
+# Deterministic Quick Sort
+sorted_arr_deterministic = deterministic_quick_sort(arr.copy())
+print("Deterministic Quick Sort:")
+print(sorted_arr_deterministic)
+
+# Randomized Quick Sort
+sorted_arr_randomized = randomized_quick_sort(arr.copy())
+print("\nRandomized Quick Sort:")
+print(sorted_arr_randomized)
+
+
+Output:
+Deterministic Quick Sort:
+[1, 1, 2, 3, 6, 8, 10]
+Randomized Quick Sort:
+[1, 1, 2, 3, 6, 8, 10]
